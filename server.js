@@ -2,10 +2,14 @@ const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
+
+// Enable CORS
+app.use(cors());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/collaborative-notebook', { useNewUrlParser: true, useUnifiedTopology: true,  serverSelectionTimeoutMS: 5000, socketTimeoutMS: 45000, connectTimeoutMS: 5000 })
