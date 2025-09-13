@@ -11,6 +11,12 @@ const wss = new WebSocket.Server({ server });
 // Enable CORS
 app.use(cors());
 
+// Middleware for logging HTTP requests
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/collaborative-notebook', { useNewUrlParser: true, useUnifiedTopology: true,  serverSelectionTimeoutMS: 5000, socketTimeoutMS: 45000, connectTimeoutMS: 5000 })
   .then(() => console.log('MongoDB connected'))
