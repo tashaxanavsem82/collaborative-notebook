@@ -1,6 +1,6 @@
 {
   "name": "collaborative-notebook",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Collaborative Notebook application",
   "main": "server.js",
   "scripts": {
